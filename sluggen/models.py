@@ -5,3 +5,6 @@ class Slug(models.Model):
     url = models.URLField('original version of the URL')
     slug = models.SlugField('shortened version of the URL', max_length=7)
     hits = models.PositiveIntegerField('number of visitors to this slug', default=0)
+
+    def __str__(self):
+        return f'{self.slug} -> {self.url}'
