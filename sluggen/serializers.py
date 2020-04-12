@@ -7,3 +7,8 @@ class SlugSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slug
         fields = '__all__'
+
+class SlugCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Slug
+        fields = ['url']
