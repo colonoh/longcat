@@ -3,7 +3,7 @@
 from rest_framework import generics
 
 from sluggen.models import Slug
-from sluggen.serializers import SlugSerializer, SlugCreateSerializer
+from sluggen.serializers import SlugListSerializer, SlugCreateSerializer
 
 
 # POST
@@ -14,12 +14,20 @@ class SlugCreate(generics.CreateAPIView):
     '''
     serializer_class = SlugCreateSerializer
 
+    # def create(self, request):
+    #     print('setting slug')
+    #     self.slug = 'abc'
+    
+    # def perform_create(self, serializer):
+    #     print('Performing create!!!')
+    #     serializer.save()
+
 class SlugList(generics.ListAPIView):
     '''
     List all of the slugs
     '''
     queryset = Slug.objects.all()
-    serializer_class = SlugSerializer
+    serializer_class = SlugListSerializer
 
 # GET
 # read a URL for a pecific slug
