@@ -1,9 +1,19 @@
+from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from sluggen.models import Slug
 from sluggen import views
+from sluggen.models import Slug
+from sluggen.utils import generate
+
+
+class GeneratorTests(TestCase):
+    def test_generate_anything(self):
+        self.assertIsNotNone(generate('http://www.google.com/', 3))
+
+    def test_generate_with_collision(self):
+        pass
 
 
 class APITests(APITestCase):
