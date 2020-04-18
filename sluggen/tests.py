@@ -11,10 +11,10 @@ from sluggen.utils import generate_new_slug
 
 
 class GeneratorTests(TestCase):
-    def test_generate_anything(self):
+    def test_generate_working_at_all(self):
         self.assertIsNotNone(generate_new_slug(3))
 
-    def test_generate_with_collision(self):
+    def test_generate_with_collisions(self):
         # original slug
         random.seed(0)
         first_slug = generate_new_slug(3)
@@ -35,9 +35,6 @@ class GeneratorTests(TestCase):
 
 class APITests(APITestCase):
     def test_create_account(self):
-        """
-        Create a new account
-        """
         url = reverse('slug-create')
         data = {'url': 'http://www.google.com/'}
         response = self.client.post(url, data, format='json')
