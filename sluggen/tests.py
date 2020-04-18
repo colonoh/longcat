@@ -1,3 +1,5 @@
+import random
+
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
@@ -10,10 +12,25 @@ from sluggen.utils import generate_new_slug
 
 class GeneratorTests(TestCase):
     def test_generate_anything(self):
-        self.assertIsNotNone(generate_new_slug('http://www.google.com/', 3))
+        self.assertIsNotNone(generate_new_slug(3))
 
     def test_generate_with_collision(self):
-        pass
+        # original slug
+        random.seed(0)
+        first_slug = generate_new_slug(3)
+        Slug.objects.create(url='http://www.lol.com/', slug=first_slug)
+
+        # first duplicate
+        random.seed(0)
+        second_slug = generate_new_slug(3)
+        Slug.objects.create(url='http://www.lol.com/', slug=second_slug)
+        self.assertNotEqual(first_slug, second_slug)
+
+        # second duplicate
+        random.seed(0)
+        third_slug = generate_new_slug(3)
+        Slug.objects.create(url='http://www.lol.com/', slug=third_slug)
+        self.assertNotEqual(second_slug, third_slug)
 
 
 class APITests(APITestCase):

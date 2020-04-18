@@ -16,5 +16,5 @@ class SlugCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         url = validated_data['url']
-        slug = generate_new_slug(url, 3)
+        slug = generate_new_slug(3)
         return Slug.objects.create(url=url, slug=slug)
