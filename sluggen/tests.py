@@ -9,6 +9,13 @@ from sluggen import views
 from sluggen.models import Slug
 from sluggen.utils import generate_new_slug
 
+class SlugTests(TestCase):
+    def test_string(self):
+        url = 'http://www.lol.com/'
+        slug = 'aaa'
+        new_slug = Slug.objects.create(url=url, slug=slug)
+        self.assertEqual(str(new_slug), f'{slug} -> {url}')
+
 
 class GeneratorTests(TestCase):
     def test_generate_working_at_all(self):
