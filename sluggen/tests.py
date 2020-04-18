@@ -5,12 +5,12 @@ from rest_framework.test import APITestCase
 
 from sluggen import views
 from sluggen.models import Slug
-from sluggen.utils import generate
+from sluggen.utils import generate_new_slug
 
 
 class GeneratorTests(TestCase):
     def test_generate_anything(self):
-        self.assertIsNotNone(generate('http://www.google.com/', 3))
+        self.assertIsNotNone(generate_new_slug('http://www.google.com/', 3))
 
     def test_generate_with_collision(self):
         pass

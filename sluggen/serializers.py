@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from sluggen.models import Slug
-from sluggen.utils import generate
+from sluggen.utils import generate_new_slug
 
 
 class SlugListSerializer(serializers.ModelSerializer):
@@ -16,6 +16,5 @@ class SlugCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         url = validated_data['url']
-        slug = generate(url, 3)
-        obj = Slug.objects.create(url=url, slug=slug)
-        return obj
+        slug = generate_new_slug(url, 3)
+        return Slug.objects.create(url=url, slug=slug)
