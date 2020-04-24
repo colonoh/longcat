@@ -16,7 +16,7 @@ URL shortener
 
 ### /api/v1/slugs
 
-### /<slug>
+### /&lt;slug&gt;
 
 ## Notes
 To run the tests (and get a code coverage report), run `docker-compose run web coverage run --source='sluggen/' manage.py test`.
