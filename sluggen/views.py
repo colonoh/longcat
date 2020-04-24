@@ -24,5 +24,5 @@ def redirect_view(request, slug):
     '''
     If this slug exists, redirect to its URL.
     '''
-    object = get_object_or_404(Slug, slug=slug)
+    object = get_object_or_404(Slug, pk=slug)
     return redirect(object.url)
