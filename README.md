@@ -9,5 +9,14 @@ URL shortener
 1. Start Docker with `docker-compose up`
 1. Django admin can be found at http://0.0.0.0:8000/admin/sluggen
 
+## APIs
+### api/v1/create
+####Parameters
+- url - the URL to be forwarded to
+
+### api/v1/slugs
+
+### <slug>
+
 ## Notes
 To run the tests (and get a code coverage report), run `docker-compose run web coverage run --source='sluggen/' manage.py test`.

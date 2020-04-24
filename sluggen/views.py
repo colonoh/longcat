@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404, redirect
 from rest_framework import generics
 
 from sluggen.models import Slug
@@ -16,3 +17,10 @@ class SlugList(generics.ListAPIView):
     '''
     queryset = Slug.objects.all()
     serializer_class = SlugListSerializer
+
+def redirect_view(request, slug):
+    '''
+    If this slug exists, redirect to its URL.
+    '''
+    object = get_object_or_404(Slug, slug=slug)
+    return redirect(object.url)
