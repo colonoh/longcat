@@ -11,6 +11,8 @@ class SlugCreate(generics.CreateAPIView):
     '''
     serializer_class = SlugCreateSerializer
 
+    # TODO: this needs to return the slug!!!
+
 class SlugList(generics.ListAPIView):
     '''
     List all of the slugs
